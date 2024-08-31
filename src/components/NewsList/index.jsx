@@ -2,7 +2,14 @@ import Pagination from '../Pagination'
 import NewsCard from './NewsCard'
 import './style.css'
 
-export default function NewsList({ articles }) {
+export default function NewsList({ 
+    articles, 
+    onClickPage, 
+    onNext, 
+    onPrevious, 
+    currentPage,
+    totalPages,
+}) {
     return (
         <div className='news-list'>
             <h2>Últimas Noticias - Por Relevância</h2>
@@ -17,7 +24,14 @@ export default function NewsList({ articles }) {
                     />
                 ))
             }
-            <Pagination total={5} results={10} />
+            <Pagination
+                totalPages={totalPages}
+                results={10}
+                onClickPage={onClickPage}
+                onNext={onNext}
+                onPrevious={onPrevious}
+                currentPage={currentPage}
+            />
         </div>
     )
 }

@@ -6,39 +6,29 @@ import NewsList from './components/NewsList'
 import Footer from './components/Footer'
 import { useParams } from 'react-router-dom'
 
-// https://api.gdeltproject.org/api/v2/doc/doc?
-// query=%20sourcelang:por
-// mode=ArtList 
-// maxrecords=75 
-// format=json 
-// timespan=1d
+const RESULT_PER_PAGE = 10
 
 function App() {
 
   const [articles, setArticles] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
   const { category } = useParams()
 
+  const totalPages = Math.ceil(articles.length / RESULT_PER_PAGE)
+
   useEffect(() => {
-    let APICall;
-    if (category) {
-      APICall = gdelt.get('/doc', {
-        params: {
-          query: `${category} sourcelang:por`,
-          maxrecords: 10,
-          format: 'json',
-          timespan: '1d'
-        }
-      })
-    } else {
-      APICall = gdelt.get('/doc', {
-        params: {
-          query: 'sourcelang:por',
-          maxrecords: 10,
-          format: 'json',
-          timespan: '1d'
-        }
-      })
-    }
+    setCurrentPage(0)
+    const APICall = gdelt.get('/doc', {
+      params: {
+        query: category
+          ? `${category} sourcelang:por`
+          : `sourcelang:por`,
+        maxrecords: 250,
+        format: 'json',
+        timespan: '1d'
+      }
+    })
+
     APICall
       .then(({ data }) => {
         if (typeof data === 'string') {
@@ -52,12 +42,30 @@ function App() {
       .catch((err) => {
         console.log('Erro ao buscar gdelt', err)
       })
-  }, [category])
+  }, [category, currentPage])
+  
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+  }, [category, currentPage])
 
   return (
     <div className='container'>
       <Header />
-      <NewsList articles={articles} />
+      <NewsList
+        articles={articles.slice(
+          currentPage * RESULT_PER_PAGE,
+          currentPage * RESULT_PER_PAGE + RESULT_PER_PAGE)
+        }
+        onClickPage={n => setCurrentPage(n - 1)}
+        onPrevious={() => setCurrentPage(prev => prev - 1)}
+        onNext={() => setCurrentPage(prev => prev + 1)}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
       <Footer />
     </div>
   )
