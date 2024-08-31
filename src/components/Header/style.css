@@ -1,0 +1,42 @@
+.header {
+    width: 100%;
+    min-height: 300px;
+    padding: 24px 0px;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.category-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.category-list p {
+    color: white;
+    margin-right: 24px;
+    font-size: 1.1rem;
+}
+
+.search-bar {
+    margin-top: 36px;    
+}
+
+.search-bar input {
+    width: 450px;
+    margin-right: 16px;
+}
+
+.filter {
+    margin-top: 16px;
+}
+
+.filter input {
+    width: 159px;
+    margin-right: 16px;
+}
