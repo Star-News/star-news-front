@@ -1,0 +1,21 @@
+.footer {
+    width: 100%;
+    min-height: 250px;
+    background: black;
+    display: flex;
+    align-items: center;
+    padding-top: 54px;
+}
+
+.footer .container {
+    width: 100%;
+    max-width: 1280px;
+}
+
+.element-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 36px;
+}

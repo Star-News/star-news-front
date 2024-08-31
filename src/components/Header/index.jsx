@@ -1,37 +1,21 @@
-import StarLogo from '../../assets/StarLogo.svg'
+import Categories from '../Categories'
+import Logo from '../logo'
 import './style.css'
 
-const categories = [
-    'categoria',
-    'categoria',
-    'categoria',
-    'categoria',
-    'categoria',
-    'categoria',
-    'categoria',
-]
 
 export default function Header() {
     return (
         <div className='header'>
-            <div className='logo'>
-                <img src={StarLogo} />
-            </div>
-            <div className='category-list'>
-                {
-                    categories.map(e => (
-                        <p>{e}</p>
-                    ))
-                }
-            </div>
+            <Logo />
+            <Categories />
             <div className='search-bar'>
-                <input />
+                <input placeholder='Pesquisar artigo' className='input' />
                 <button>Pesquisar</button>
             </div>
-            <div className='filter'>
-                <input />
-                <input />
-                <input />
+            <div className='filters'>
+                <input placeholder='Data de inicio' className='input'/>
+                <input placeholder='Data de fim' className='input'/>
+                <input placeholder='Ordenar por' className='input'/>
             </div>
         </div>
     )

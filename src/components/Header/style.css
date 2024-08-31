@@ -9,34 +9,39 @@
     align-items: center;
 }
 
-.category-list {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-}
-
-.category-list p {
-    color: white;
-    margin-right: 24px;
-    font-size: 1.1rem;
-}
-
 .search-bar {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
     margin-top: 36px;    
 }
 
 .search-bar input {
-    width: 450px;
+    width: 100%;
     margin-right: 16px;
 }
 
-.filter {
+.search-bar button {
+    background: red;
+    color: white;
+    padding: 0px 16px;
+    border-radius: 8px;
+}
+
+.filters {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
     margin-top: 16px;
 }
 
-.filter input {
-    width: 159px;
+.filters input {
+    width: 100%;
     margin-right: 16px;
+}
+
+.filters input:last-of-type {
+    margin-right: 0px;
 }

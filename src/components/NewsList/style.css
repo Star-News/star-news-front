@@ -1,6 +1,11 @@
 .news-list {
     width: 100%;
     min-height: 80vh;
-    padding: 0px 32px;
-    max-width: 1920px;
+    max-width: 1280px;
+    padding: 0px 24px;
+}
+
+.news-list h2 {
+    margin: 24px 0px;
+    font-size: 1.4rem;
 }
