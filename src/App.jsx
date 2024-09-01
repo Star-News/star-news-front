@@ -42,7 +42,7 @@ function App() {
       .catch((err) => {
         console.log('Erro ao buscar gdelt', err)
       })
-  }, [category, currentPage])
+  }, [category]) //apagar o currentPage era o erro
   
   useEffect(() => {
       window.scrollTo({
