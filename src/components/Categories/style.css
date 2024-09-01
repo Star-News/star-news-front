@@ -38,3 +38,13 @@
 .category-list.column-list a {
     font-size: 1.2rem;
 }
+
+@media screen and (max-width: 920px){
+    .category-list{
+        padding:0px 16px ;
+        flex-wrap: wrap;
+    }
+    .category-list a {
+        padding-bottom: 16px;
+    }
+}

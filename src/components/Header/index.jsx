@@ -22,23 +22,32 @@ export default function Header() {
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
-        const filter = searchParams.get('filter')
-        const startDate = searchParams.get('startDate')
-        const endDate = searchParams.get('endDate')
+        const paraTextFilter = searchParams.get('filter')
+        const paramStartDate = searchParams.get('startDate')
+        const paramEndDate = searchParams.get('endDate')
         const predefined = [
             {
                 key: 'filter',
-                value: filter
+                value: paraTextFilter
             },
             {
                 key: 'startDate',
-                value: startDate
+                value: paramStartDate
             },
             {
                 key: 'endDate',
-                value: endDate
+                value: paramEndDate
             }
         ]
+        if (textFilter && (paraTextFilter === null || paraTextFilter === '')) {
+            setTextFilter('')
+        }
+        if (startDate && (paramStartDate === null || paramStartDate === '')) {
+            setStartDate('')
+        }
+        if (endDate && (paramEndDate === null || paramEndDate === '')){
+            setEndDate('')
+        }
         if (OPTIONS.includes(sort)) {
             const params = [`sort=${sort}`]
             params.push(...predefined
@@ -75,6 +84,8 @@ export default function Header() {
             search: params.length > 0 ? `?${params.join(`$`)}` : ``
         });
     };
+    console.log(startDate)
+
 
     return (
         <div className="header">

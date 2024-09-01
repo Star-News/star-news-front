@@ -39,7 +39,7 @@ export default function Categories({ orientation = 'horizontal'}) {
     const col2 = categories.slice(middle, categories.length)
 
     return orientation === 'horizontal' ? (
-        <div className='category-columns'>
+        <div className='category-list'>
             {
                 categories.map(e => (
                     <Link key={e.url} to={e.url}>{e.name}</Link>
@@ -47,7 +47,7 @@ export default function Categories({ orientation = 'horizontal'}) {
             }
         </div>
     ) : (
-        <div className='category-list'>
+        <div className='category-columns'>
             <div className='category-list column-list'>
                 {
                     col1.map(e => (
