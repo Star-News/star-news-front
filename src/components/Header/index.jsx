@@ -119,11 +119,11 @@ export default function Header() {
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
                 />
-                <input
-                    value={sort}
+                <Select
                     onChange={(e) => setSort(e.target.value)}
+                    options ={OPTIONS}
                     placeholder="Ordenar por"
-                    className="input"
+                    className="input select"
                 />
             </div>
         </div>

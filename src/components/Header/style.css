@@ -37,15 +37,39 @@
     margin-top: 16px;
 }
 
-.button {
+.filters button {
     cursor: pointer;
 }
 
-.filters input {
+
+.filters .input {
     width: 100%;
     margin-right: 16px;
 }
 
-.filters input:last-of-type {
-    margin-right: 0px;
+.filters input.select {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filters .input.select{
+    border: none;
+    outline: none;
+}
+
+@media screen and (max-width: 540px) {
+    .filters{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .filters .input {
+        min-width: auto;
+        max-width: 130px;
+        margin-bottom: 16px;
+    }
+    .filters .input.input.select{
+        min-width: 130px ;
+    }
+    
 }

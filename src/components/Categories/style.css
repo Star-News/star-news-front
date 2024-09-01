@@ -48,3 +48,11 @@
         padding-bottom: 16px;
     }
 }
+
+@media screen and (max-width: 540px) {
+    .category-columns{
+        flex-direction: column;
+    }
+
+    
+}
