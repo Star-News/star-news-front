@@ -4,17 +4,19 @@ import './style.css'
 import gdelt from './gdelt'
 import NewsList from './components/NewsList'
 import Footer from './components/Footer'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 const RESULT_PER_PAGE = 10
 
 function App() {
 
   const [articles, setArticles] = useState([])
+  const [filteredArticles, setFilteredArticles] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const { category } = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const totalPages = Math.ceil(articles.length / RESULT_PER_PAGE)
+  const totalPages = Math.ceil(filteredArticles.length / RESULT_PER_PAGE)
 
   useEffect(() => {
     setCurrentPage(0)
@@ -45,6 +47,18 @@ function App() {
   }, [category]) //apagar o currentPage era o erro
   
   useEffect(() => {
+    const filter = searchParams.get('filter')
+    if (filter && articles.length > 0) {
+      const subset = articles.filter(article => {
+        return article.title.toLowerCase().includes(filter.toLowerCase())
+      })
+      setFilteredArticles(subset)
+    } else {
+      setFilteredArticles(articles)
+    }
+  }, [searchParams, articles])
+
+  useEffect(() => {
       window.scrollTo({
         top: 0,
         left: 0,
@@ -56,7 +70,7 @@ function App() {
     <div className='container'>
       <Header />
       <NewsList
-        articles={articles.slice(
+        articles={filteredArticles.slice(
           currentPage * RESULT_PER_PAGE,
           currentPage * RESULT_PER_PAGE + RESULT_PER_PAGE)
         }
