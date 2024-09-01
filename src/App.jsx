@@ -22,6 +22,7 @@ function App() {
     setCurrentPage(0)
     const startDate = searchParams.get('startDate')
     const endDate = searchParams.get('endDate')
+    const sort = searchParams.get('sort')
     
     const APICall = gdelt.get('/doc', {
       params: {
@@ -32,6 +33,8 @@ function App() {
         format: 'json',
         ...(startDate ? {startdatetime: startDate} : {}),
         ...(endDate ? {enddatetime: endDate} : {}),
+        ...(sort ? {sort} : {}),
+        ...(!startDate && !endDate ? {timespan: '1d'} : {})
       }
     })
 

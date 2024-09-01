@@ -2,87 +2,141 @@ import { useEffect, useState } from "react";
 import Categories from "../Categories";
 import Logo from "../logo";
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
 
+const OPTIONS = [
+    'DateDesc',
+    'DateAsc',
+    'ToneDesc',
+    'ToneAsc'
+]
+
+
 export default function Header() {
-  const [textFilter, setTextFilter] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const navigate = useNavigate();
+    const [textFilter, setTextFilter] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [sort, setSort] = useState('')
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams()
 
-  const onClickSearchBtn = () => {
-    let params = [];
-    if (textFilter) {
-      params.push(`filter=${textFilter}`);
-    }
-    if (startDate && validateDateString(startDate)) {
-      params.push(`startDate=${formatDateString(startDate)}`);
-    }
-    if (endDate && validateDateString(endDate)) {
-      params.push(`endDate=${formatDateString(endDate, false)}`);
-    }
-    navigate({
-      search: params.length >0 ? `?${params.join(`$`)}`: ``
-    });
-  };
+    useEffect(() => {
+        const filter = searchParams.get('filter')
+        const startDate = searchParams.get('startDate')
+        const endDate = searchParams.get('endDate')
+        const predefined = [
+            {
+                key: 'filter',
+                value: filter
+            },
+            {
+                key: 'startDate',
+                value: startDate
+            },
+            {
+                key: 'endDate',
+                value: endDate
+            }
+        ]
+        if (OPTIONS.includes(sort)) {
+            const params = [`sort=${sort}`]
+            params.push(...predefined
+                .filter(e => e.value !== null)
+                .map(e => `${e.key}=${e.value}`)
+            )
+            navigate({
+                search: `?${params.join('&')}`
+            })
+        } else {
+            if (sort === '') {
+                const params = predefined
+                    .filter(e => e.value !== null)
+                    .map(e => `${e.key}=${e.value}`)
+                navigate({
+                    search: `?${params.join('&')}`
+                })
+            }
+        }
+    }, [sort, searchParams])
 
-  return (
-    <div className="header">
-      <Logo />
-      <Categories />
-      <div className="search-bar">
-        <input
-          placeholder="Pesquisar artigo"
-          className="input"
-          value={textFilter}
-          onChange={(e) => setTextFilter(e.target.value)}
-        />
-        <button className="button" onClick={onClickSearchBtn}>
-          Pesquisar
-        </button>
-      </div>
-      <div className="filters">
-        <PatternFormat
-          format="##/##/####"
-          mask="_"
-          placeholder="Data de inicio"
-          className="input"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-        <PatternFormat
-          format="##/##/####"
-          mask="_"
-          placeholder="Data de fim"
-          className="input"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-        <input placeholder="Ordenar por" className="input" />
-      </div>
-    </div>
-  );
+    const onClickSearchBtn = () => {
+        let params = [];
+        if (textFilter) {
+            params.push(`filter=${textFilter}`);
+        }
+        if (startDate && validateDateString(startDate)) {
+            params.push(`startDate=${formatDateString(startDate)}`);
+        }
+        if (endDate && validateDateString(endDate)) {
+            params.push(`endDate=${formatDateString(endDate, false)}`);
+        }
+        navigate({
+            search: params.length > 0 ? `?${params.join(`$`)}` : ``
+        });
+    };
+
+    return (
+        <div className="header">
+            <Logo />
+            <Categories />
+            <div className="search-bar">
+                <input
+                    placeholder="Pesquisar artigo"
+                    className="input"
+                    value={textFilter}
+                    onChange={(e) => setTextFilter(e.target.value)}
+                />
+                <button className="button" onClick={onClickSearchBtn}>
+                    Pesquisar
+                </button>
+            </div>
+            <div className="filters">
+                <PatternFormat
+                    format="##/##/####"
+                    mask="_"
+                    placeholder="Data de inicio"
+                    className="input"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                />
+                <PatternFormat
+                    format="##/##/####"
+                    mask="_"
+                    placeholder="Data de fim"
+                    className="input"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                />
+                <input
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value)}
+                    placeholder="Ordenar por"
+                    className="input"
+                />
+            </div>
+        </div>
+    );
 }
 
 function formatDateString(str, isStart = true) {
-  const [day, month, year] = str.split("/");
-  return `${year}${month}${day}${isStart ? "000000" : "235959"}`;
+    const [day, month, year] = str.split("/");
+    return `${year}${month}${day}${isStart ? "000000" : "235959"}`;
 }
 
 function validateDateString(str) {
-  if (str.includes("_")) {
-    return false;
-  }
+    if (str.includes("_")) {
+        return false;
+    }
 
-  const date = new Date(transformDateString(str));
-  return !isNaN(date.getTime());
+    const date = new Date(transformDateString(str));
+    return !isNaN(date.getTime());
 }
 
 function transformDateString(str) {
-  // DD/MM/YYYY
-  const [day, month, year] = str.split("/");
+    // DD/MM/YYYY
+    const [day, month, year] = str.split("/");
 
-  // YYYY-MM-DD
-  return `${year}-${month}-${day}`;
+    // YYYY-MM-DD
+    return `${year}-${month}-${day}`;
 }

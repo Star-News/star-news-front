@@ -1,6 +1,8 @@
 import moment from 'moment'
 import { getPastTime } from '../../../utils'
 import './style.css'
+import DefaultImg from '../../../assets/ImgDefault.png'
+import { useRef } from 'react'
 
 export default function NewsCard({
     title,
@@ -12,6 +14,7 @@ export default function NewsCard({
     const isHttps = url.startsWith('https')
     const rest = isHttps ? url.substring(8) : url.substring(7)
     const [domain] = rest.split('/')
+    const imgRef = useRef(null)
 
     return (
         <div className='news-card'>
@@ -22,7 +25,11 @@ export default function NewsCard({
                 <p>há {getPastTime(seendate)} horas atrás</p>
             </div>
             <div className='img'>
-                <img src={socialimage} />
+                <img ref={imgRef} onError={() => {
+                    if (imgRef.current) {
+                        imgRef.current.src = DefaultImg
+                    }
+                }} src={socialimage} />
             </div>
         </div>
     )
