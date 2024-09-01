@@ -4,6 +4,7 @@ import Logo from "../logo";
 import "./style.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
+import Select from 'react-select';
 
 const OPTIONS = [
     'DateDesc',

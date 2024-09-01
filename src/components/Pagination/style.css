@@ -73,3 +73,13 @@
     margin-top: 50%;
     translate: -50% -50%;
 }
+
+@media screen and (max-width: 540px) {
+    .pagination {
+        flex-direction: column;
+    }
+
+    .pagination .buttons {
+        margin-bottom: 16px;
+    }
+}
