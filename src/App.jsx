@@ -20,6 +20,9 @@ function App() {
 
   useEffect(() => {
     setCurrentPage(0)
+    const startDate = searchParams.get('startDate')
+    const endDate = searchParams.get('endDate')
+    
     const APICall = gdelt.get('/doc', {
       params: {
         query: category
@@ -27,7 +30,8 @@ function App() {
           : `sourcelang:por`,
         maxrecords: 250,
         format: 'json',
-        timespan: '1d'
+        ...(startDate ? {startdatetime: startDate} : {}),
+        ...(endDate ? {enddatetime: endDate} : {}),
       }
     })
 
@@ -44,7 +48,7 @@ function App() {
       .catch((err) => {
         console.log('Erro ao buscar gdelt', err)
       })
-  }, [category]) //apagar o currentPage era o erro
+  }, [category, searchParams ]) //apagar o currentPage era o erro
   
   useEffect(() => {
     const filter = searchParams.get('filter')
