@@ -58,7 +58,7 @@ function paginationArray(current, highest, max) {
   const result = [1];
 
   const start = Math.max(2, current - max);
-  const end = Math.min(highest - 1, current + max); // trocar o "," por "+" outro erro
+  const end = Math.min(highest - 1, current + max);
 
   if (start > 2) {
     result.push(-1);
@@ -78,5 +78,3 @@ function paginationArray(current, highest, max) {
 
   return result;
 }
-
-// AJEITAR BARRA DE PAGINAÇÃO

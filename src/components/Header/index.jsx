@@ -7,68 +7,74 @@ import { PatternFormat } from "react-number-format";
 import Select from 'react-select';
 
 const OPTIONS = [
-    'DateDesc',
-    'DateAsc',
-    'ToneDesc',
-    'ToneAsc'
-]
+    { value: 'DateDesc', label: 'Data Descendente' },
+    { value: 'DateAsc', label: 'Data Ascendente' }
+];
 
+const CATEGORY_OPTIONS = [
+    { value: 'sports', label: 'Esportes' },
+    { value: 'policy', label: 'Política' },
+    { value: 'technology', label: 'Tecnologia' },
+    { value: 'finances', label: 'finanças' },
+    { value: 'health', label: 'Saúde' },
+    { value: 'education', label: 'Educação' },
+    { value: 'entertainment', label: 'entretenimento' }
+];
 
 export default function Header() {
     const [textFilter, setTextFilter] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [sort, setSort] = useState('')
+    const [sort, setSort] = useState('');
+    const [category, setCategory] = useState('');
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams()
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
-        const paraTextFilter = searchParams.get('filter')
-        const paramStartDate = searchParams.get('startDate')
-        const paramEndDate = searchParams.get('endDate')
+        const paraTextFilter = searchParams.get('filter');
+        const paramStartDate = searchParams.get('startDate');
+        const paramEndDate = searchParams.get('endDate');
+        const paramCategory = searchParams.get('category');
         const predefined = [
-            {
-                key: 'filter',
-                value: paraTextFilter
-            },
-            {
-                key: 'startDate',
-                value: paramStartDate
-            },
-            {
-                key: 'endDate',
-                value: paramEndDate
-            }
-        ]
+            { key: 'filter', value: paraTextFilter },
+            { key: 'startDate', value: paramStartDate },
+            { key: 'endDate', value: paramEndDate },
+            { key: 'category', value: paramCategory }
+        ];
+
         if (textFilter && (paraTextFilter === null || paraTextFilter === '')) {
-            setTextFilter('')
+            setTextFilter('');
         }
         if (startDate && (paramStartDate === null || paramStartDate === '')) {
-            setStartDate('')
+            setStartDate('');
         }
-        if (endDate && (paramEndDate === null || paramEndDate === '')){
-            setEndDate('')
+        if (endDate && (paramEndDate === null || paramEndDate === '')) {
+            setEndDate('');
         }
-        if (OPTIONS.includes(sort)) {
-            const params = [`sort=${sort}`]
+        if (category && (paramCategory === null || paramCategory === '')) {
+            setCategory('');
+        }
+
+        if (OPTIONS.map(option => option.value).includes(sort)) {
+            const params = [`sort=${sort}`];
             params.push(...predefined
                 .filter(e => e.value !== null)
                 .map(e => `${e.key}=${e.value}`)
-            )
+            );
             navigate({
                 search: `?${params.join('&')}`
-            })
+            });
         } else {
             if (sort === '') {
                 const params = predefined
                     .filter(e => e.value !== null)
-                    .map(e => `${e.key}=${e.value}`)
+                    .map(e => `${e.key}=${e.value}`);
                 navigate({
                     search: `?${params.join('&')}`
-                })
+                });
             }
         }
-    }, [sort, searchParams])
+    }, [sort, category, searchParams]);
 
     const onClickSearchBtn = () => {
         let params = [];
@@ -81,12 +87,13 @@ export default function Header() {
         if (endDate && validateDateString(endDate)) {
             params.push(`endDate=${formatDateString(endDate, false)}`);
         }
+        if (category) {
+            params.push(`category=${category}`);
+        }
         navigate({
-            search: params.length > 0 ? `?${params.join(`$`)}` : ``
+            search: params.length > 0 ? `?${params.join('&')}` : ``
         });
     };
-    console.log(startDate)
-
 
     return (
         <div className="header">
@@ -121,9 +128,15 @@ export default function Header() {
                     onChange={(e) => setEndDate(e.target.value)}
                 />
                 <Select
-                    onChange={(e) => setSort(e.target.value)}
-                    options ={OPTIONS}
+                    onChange={(e) => setSort(e.value)}
+                    options={OPTIONS}
                     placeholder="Ordenar por"
+                    className="input select"
+                />
+                <Select
+                    onChange={(e) => setCategory(e.value)}
+                    options={CATEGORY_OPTIONS}
+                    placeholder="Selecionar categoria"
                     className="input select"
                 />
             </div>
@@ -146,9 +159,6 @@ function validateDateString(str) {
 }
 
 function transformDateString(str) {
-    // DD/MM/YYYY
     const [day, month, year] = str.split("/");
-
-    // YYYY-MM-DD
     return `${year}-${month}-${day}`;
 }
