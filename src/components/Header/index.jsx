@@ -18,7 +18,7 @@ const CATEGORY_OPTIONS = [
     { value: 'finances', label: 'finanças' },
     { value: 'health', label: 'Saúde' },
     { value: 'education', label: 'Educação' },
-    { value: 'entertainment', label: 'entretenimento' }
+    { value: 'entertainment', label: 'Entretenimento' }
 ];
 
 export default function Header() {
