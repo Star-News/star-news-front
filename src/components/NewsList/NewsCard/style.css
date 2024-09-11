@@ -22,7 +22,7 @@
 }
 
 .news-card p {
-    color: #94908c;
+    color: #000000;
     font-family: Inter;
     font-size: 14.4px;
     font-style: normal;
@@ -31,7 +31,7 @@
     margin-top: 16px;
 }
 .news-card a {
-    color: #2b8eff;
+    color: #000000;
     font-family: Inter;
     font-size: 14.4px;
     font-style: normal;

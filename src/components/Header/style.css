@@ -27,6 +27,8 @@
     color: white;
     padding: 0px 16px;
     border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .filters {
