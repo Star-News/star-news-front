@@ -1,3 +1,5 @@
+import
+
 /* NAV BAR */
 .news-list {
     width: 100%;
@@ -18,10 +20,19 @@
 }
 
 .img-acessibilty {
-    justify-content: center;
     margin-bottom: 15px;
     max-width: 5%;
     display: flex;
     background-color: none;
     cursor: pointer;
+    background-color: red;
+}
+
+.title-speak {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 70px;
+    margin: 0px 80px 0px 30px;
+    background-color: blue;
+    margin-bottom: 10px;
+    
 }

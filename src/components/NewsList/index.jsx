@@ -26,6 +26,7 @@ export default function NewsList({
                         />
                         <button className='acessibility-button' onClick={() => onSpeak(e.title)}>
                             <img className='img-acessibilty' src={SpeakerIcon}/>
+                            <p className='title-speak'>Ouvir título</p>
                         </button>
                     </div>
                 ))
