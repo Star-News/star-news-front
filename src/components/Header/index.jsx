@@ -15,7 +15,7 @@ const CATEGORY_OPTIONS = [
     { value: 'sports', label: 'Esportes' },
     { value: 'policy', label: 'Política' },
     { value: 'technology', label: 'Tecnologia' },
-    { value: 'finances', label: 'finanças' },
+    { value: 'finances', label: 'Finanças' },
     { value: 'health', label: 'Saúde' },
     { value: 'education', label: 'Educação' },
     { value: 'entertainment', label: 'Entretenimento' }
