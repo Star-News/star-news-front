@@ -1,32 +1,44 @@
-<h1 align="left">StarNews</h1>
+## Star News: Notícias Acessíveis para Todos
 
-###
+**O que é o Star News?**
 
+O Star News é um projeto acadêmico desenvolvido pela equipe [Nome da Equipe] para a disciplina de Design Centrado no Usuário e Front-End Frameworks da Uninassau Paulista-PE. Nosso objetivo é criar um site de notícias acessível, com foco em pessoas com deficiência visual.
 
-###
+**Funcionalidades:**
 
-<div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="30" alt="react logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" alt="html5 logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" alt="css3 logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" height="30" alt="github logo"  />
-</div>
+* **Sistema de texto falado:** Permite que usuários com deficiência visual ou com dificuldades de leitura ouçam o conteúdo das páginas.
+* **[Outra funcionalidade 1]:** [Descrição breve da funcionalidade]
+* **[Outra funcionalidade 2]:** [Descrição breve da funcionalidade]
 
-###
+**Tecnologias:**
 
-<div align="left">
-  <a href="https//www.instagram.com/star_news01?igsh=d2kwenBkYJyNm81" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
-  </a>
-  <img src="https://img.shields.io/static/v1?message=Discord&logo=discord&label=&color=7289DA&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="discord logo"  />
-  <a href="starnews408@gmail.com" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
-  </a>
-</div>
+* React
+* HTML
+* CSS
+* Node.js
+* [Outras tecnologias utilizadas]
 
-###
+**Como contribuir:**
+
+1. **Fork** este repositório.
+2. **Clone** o seu fork.
+3. **Crie um novo branch** para sua feature.
+4. **Faça suas alterações** e commit.
+5. **Abra um Pull Request.**
+
+**Licença:**
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+[![MIT License](https://img.shields.io/apm/l/vim?style=flat-square)](https://github.com/opensource/licenses/blob/master/MIT)
+
+**Agradecimentos:**
+
+Agradecemos ao Prof. Dr. Sávio Almeida pela orientação e apoio durante o desenvolvimento do projeto.
+
+**Link para o site:** https://seusite.com
+
+**Contribuidores:**
+
+* [Seu nome]
+* [Nome dos outros membros da equipe]
