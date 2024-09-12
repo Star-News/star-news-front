@@ -18,6 +18,16 @@ function App() {
 
   const totalPages = Math.ceil(filteredArticles.length / RESULT_PER_PAGE)
 
+  const speak = (text) => {
+    if ('speechSynthesis' in window) {
+      const speech = new SpeechSynthesisUtterance(text)
+      speech.lang = 'pt-BR' // Define o idioma
+      window.speechSynthesis.speak(speech)
+    } else {
+      alert('Text-to-Speech não é suportado no seu navegador.')
+    }
+  }
+
   useEffect(() => {
     setCurrentPage(0)
     const startDate = searchParams.get('startDate')
@@ -51,7 +61,7 @@ function App() {
       .catch((err) => {
         console.log('Erro ao buscar gdelt', err)
       })
-  }, [category, searchParams ]) //apagar o currentPage era o erro
+  }, [category, searchParams ])
   
   useEffect(() => {
     const filter = searchParams.get('filter')
@@ -86,6 +96,8 @@ function App() {
         onNext={() => setCurrentPage(prev => prev + 1)}
         currentPage={currentPage}
         totalPages={totalPages}
+        // Adicionando a função para converter o título do artigo em áudio
+        onSpeak={speak} 
       />
       <Footer />
     </div>

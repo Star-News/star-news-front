@@ -9,19 +9,22 @@ export default function NewsList({
     onPrevious, 
     currentPage,
     totalPages,
+    onSpeak 
 }) {
     return (
         <div className='news-list'>
             <h2>Últimas Noticias - Por Relevância</h2>
             {
                 articles.map(e => (
-                    <NewsCard
-                        key={e.url}
-                        title={e.title}
-                        url={e.url}
-                        seendate={e.seendate}
-                        socialimage={e.socialimage}
-                    />
+                    <div key={e.url}>
+                        <NewsCard
+                            title={e.title}
+                            url={e.url}
+                            seendate={e.seendate}
+                            socialimage={e.socialimage}
+                        />
+                        <button onClick={() => onSpeak(e.title)}>Ouvir Título</button>
+                    </div>
                 ))
             }
             <Pagination
