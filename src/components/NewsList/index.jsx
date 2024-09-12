@@ -1,15 +1,16 @@
 import Pagination from '../Pagination'
 import NewsCard from './NewsCard'
+import SpeakerIcon from '../../assets/SpeakerIcon.svg'
 import './style.css'
 
-export default function NewsList({ 
-    articles, 
-    onClickPage, 
-    onNext, 
-    onPrevious, 
+export default function NewsList({
+    articles,
+    onClickPage,
+    onNext,
+    onPrevious,
     currentPage,
     totalPages,
-    onSpeak 
+    onSpeak
 }) {
     return (
         <div className='news-list'>
@@ -23,7 +24,9 @@ export default function NewsList({
                             seendate={e.seendate}
                             socialimage={e.socialimage}
                         />
-                        <button onClick={() => onSpeak(e.title)}>Ouvir Título</button>
+                        <button className='acessibility-button' onClick={() => onSpeak(e.title)}>
+                            <img className='img-acessibilty' src={SpeakerIcon}/>
+                        </button>
                     </div>
                 ))
             }

@@ -12,3 +12,17 @@
     margin: 24px 0px;
     font-size: 1.4rem;
 }
+
+.acessibility-button {
+    background: none;
+}
+
+.img-acessibilty {
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 6%;
+    display: flex;
+    background-color: none;
+    cursor: pointer;
+}
