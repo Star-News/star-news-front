@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Loader from './components/ProgressBar'
 import Header from './components/Header'
 import './style.css'
 import gdelt from './gdelt'
@@ -9,6 +10,18 @@ import { useParams, useSearchParams } from 'react-router-dom'
 const RESULT_PER_PAGE = 10
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fakeDataFetch = () => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
+    }
+
+    fakeDataFetch();
+  }, [])
 
   const [articles, setArticles] = useState([])
   const [filteredArticles, setFilteredArticles] = useState([])
@@ -33,7 +46,7 @@ function App() {
     const startDate = searchParams.get('startDate')
     const endDate = searchParams.get('endDate')
     const sort = searchParams.get('sort')
-    
+
     const APICall = gdelt.get('/doc', {
       params: {
         query: category
@@ -41,10 +54,10 @@ function App() {
           : `sourcelang:por`,
         maxrecords: 250,
         format: 'json',
-        ...(startDate ? {startdatetime: startDate} : {}),
-        ...(endDate ? {enddatetime: endDate} : {}),
-        ...(sort ? {sort} : {}),
-        ...(!startDate && !endDate ? {timespan: '1d'} : {})
+        ...(startDate ? { startdatetime: startDate } : {}),
+        ...(endDate ? { enddatetime: endDate } : {}),
+        ...(sort ? { sort } : {}),
+        ...(!startDate && !endDate ? { timespan: '1d' } : {})
       }
     })
 
@@ -61,8 +74,8 @@ function App() {
       .catch((err) => {
         console.log('Erro ao buscar gdelt', err)
       })
-  }, [category, searchParams ])
-  
+  }, [category, searchParams])
+
   useEffect(() => {
     const filter = searchParams.get('filter')
     if (filter && articles.length > 0) {
@@ -76,14 +89,16 @@ function App() {
   }, [searchParams, articles])
 
   useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      })
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }, [category, currentPage])
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className='container'>
       <Header />
       <NewsList
@@ -97,11 +112,11 @@ function App() {
         currentPage={currentPage}
         totalPages={totalPages}
         // Adicionando a função para converter o título do artigo em áudio
-        onSpeak={speak} 
+        onSpeak={speak}
       />
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App
