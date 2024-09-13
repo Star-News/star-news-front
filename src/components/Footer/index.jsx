@@ -1,5 +1,5 @@
 import Categories from '../Categories'
-import Logo from '../logo'
+import Logo from '../logo.svg'
 import NewsLetterForm from '../NewsLetterForm'
 import './style.css'
 
