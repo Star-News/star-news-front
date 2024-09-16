@@ -7,20 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
   <title>Star News</title>
+ 
 </head>
 
 <body>
   <div id="root"></div>
+  <button id="contrast-toggle">Ativar Alto Contraste</button>
+  <script type="module">
+    document.getElementById('contrast-toggle').addEventListener('click', function() {
+      document.body.classList.toggle('high-contrast');
+      const isHighContrast = document.body.classList.contains('high-contrast');
+      this.textContent = isHighContrast ? "Desativar Alto Contraste" : "Ativar Alto Contraste";
+    });
+  </script>
   <script type="module" src="/src/main.jsx"></script>
+  <footer>
+    <p>&copy; 2024 StarNews. Todos os direitos reservados®</p>
+  </footer>
 </body>
-
 </html>

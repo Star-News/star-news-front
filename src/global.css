@@ -23,3 +23,73 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: #bfa8a8;
 }
+body {
+  font-family: 'Inter', sans-serif;
+  color: black;
+  background-color: white;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para alto contraste */
+.high-contrast {
+  background-color: black;
+  color: white;
+}
+
+.high-contrast a {
+  color: #00f;
+}
+
+.high-contrast .button,
+.high-contrast .input,
+.high-contrast .footer,
+.high-contrast .header {
+  background-color: #333;
+  color: white;
+}
+
+.high-contrast .input {
+  border: 1px solid #666;
+}
+
+.high-contrast .button {
+  border: 1px solid #666;
+}
+
+/* Adiciona contraste aos links e botões */
+.high-contrast .button {
+  background-color: #444;
+  color: white;
+}
+
+.high-contrast .button:hover {
+  background-color: #555;
+}
+
+/* Estilos para footer */
+.high-contrast .footer {
+  background-color: #111;
+  color: white;
+}
+
+/* Estilos para header */
+.high-contrast .header {
+  background-color: #222;
+  color: white;
+}
+
+/* Estilos para o botão de contraste */
+#contrast-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; 
+}
