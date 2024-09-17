@@ -10,11 +10,12 @@ export default function NewsList({
     onPrevious,
     currentPage,
     totalPages,
-    onSpeak
+    fontSize,
+    onSpeak 
 }) {
     return (
-        <div className='news-list'>
-            <h2>Últimas Noticias - Por Relevância</h2>
+        <div className='news-list' style={{ fontSize: `${fontSize}px` }}>
+            <h2>Últimas Notícias - Por Relevância</h2>
             {
                 articles.map(e => (
                     <div key={e.url}>
@@ -23,10 +24,12 @@ export default function NewsList({
                             url={e.url}
                             seendate={e.seendate}
                             socialimage={e.socialimage}
+                            summary={e.summary}
                         />
-                        <button className='acessibility-button' onClick={() => onSpeak(e.title)}>
-                            <img className='img-acessibilty' src={SpeakerIcon}/>
-                            <p className='title-speak'>Ouvir título</p>
+                        {/* Botão para converter o título em fala */}
+                        <button className='speak-button' onClick={() => onSpeak(`${e.title}. ${e.summary}`)}>
+                            <img src={SpeakerIcon} alt="Ouvir notícia" className='img-accessibility' />
+                            <p>Ouvir Notícia</p>
                         </button>
                     </div>
                 ))
