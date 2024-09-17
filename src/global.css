@@ -39,7 +39,7 @@ body {
 }
 
 .high-contrast a {
-  color: #00f;
+  color: rgb(255, 238, 0);
 }
 
 .high-contrast .button,
@@ -51,7 +51,7 @@ body {
 }
 
 .high-contrast .input {
-  border: 1px solid #666;
+  border: 1px solid rgb(255, 238, 0);
 }
 
 .high-contrast .button {
@@ -60,8 +60,8 @@ body {
 
 /* Adiciona contraste aos links e botões */
 .high-contrast .button {
-  background-color: #444;
-  color: white;
+  background-color: rgb(255, 238, 0);
+  color: rgb(0, 0, 0);
 }
 
 .high-contrast .button:hover {
@@ -72,6 +72,22 @@ body {
 .high-contrast .footer {
   background-color: #111;
   color: white;
+}
+
+
+.high-contrast .news-card {
+  background: grey;
+}
+
+.high-contrast .news-card h3{
+  color: rgb(255, 255, 255);
+}
+.high-contrast .news-card p{
+  color: rgb(255, 255, 255);
+}
+
+.high-contrast .header .input{
+  border-color: yellow;
 }
 
 /* Estilos para header */
@@ -86,10 +102,16 @@ body {
   bottom: 20px;
   right: 20px;
   padding: 10px;
-  background: #444;
-  color: white;
+  background: #aaaaaa;
+  color: rgb(0, 0, 0);
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   z-index: 1000; 
+  box-shadow: -4px 4px 19.4px 0px rgba(0, 0, 0, 0.25);
 }
+
+#contrast-toggle:hover {
+  background-color: #dadada;
+}
+
