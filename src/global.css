@@ -48,6 +48,7 @@ body {
 .high-contrast .header {
   background-color: #333;
   color: white;
+  border-color: yellow;
 }
 
 .high-contrast .input {
