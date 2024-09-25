@@ -1,7 +1,6 @@
-import Pagination from '../Pagination'
-import NewsCard from './NewsCard'
-import SpeakerIcon from '../../assets/SpeakerIcon.svg'
-import './style.css'
+import Pagination from '../Pagination';
+import NewsCard from './NewsCard';
+import './style.css';
 
 export default function NewsList({
     articles,
@@ -18,19 +17,17 @@ export default function NewsList({
             <h2>Últimas Notícias - Por Relevância</h2>
             {
                 articles.map(e => (
-                    <div key={e.url}>
-                        <NewsCard
-                            title={e.title}
-                            url={e.url}
-                            seendate={e.seendate}
-                            socialimage={e.socialimage}
-                            summary={e.summary}
-                        />
-                        {/* Botão para converter o título em fala */}
-                        <button className='speak-button' onClick={() => onSpeak(`${e.title}. ${e.summary}`)}>
-                            <img src={SpeakerIcon} alt="Ouvir notícia" className='img-accessibility' />
-                            <p>Ouvir Notícia</p>
-                        </button>
+                    <div key={e.url} className='news-item'>
+                        {/* Modificação do codigo, invés do botão ao clicar ler, só de apertar no texto ele já ler */}
+                        <div onClick={() => onSpeak(`${e.title}. ${e.summary}`)} className='clickable-news'>
+                            <NewsCard
+                                title={e.title}
+                                url={e.url}
+                                seendate={e.seendate}
+                                socialimage={e.socialimage}
+                                summary={e.summary}
+                            />
+                        </div>
                     </div>
                 ))
             }
@@ -43,5 +40,5 @@ export default function NewsList({
                 currentPage={currentPage}
             />
         </div>
-    )
+    );
 }
