@@ -9,6 +9,10 @@
     align-items: center;
 }
 
+.category-list a {
+    font-family: Posterama;
+}
+
 .search-bar {
     width: 90%;
     display: flex;
@@ -20,15 +24,19 @@
 .search-bar input {
     width: 100%;
     margin-right: 16px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 15px;
 }
 
 .search-bar button {
     background: red;
     color: white;
     padding: 0px 16px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    box-shadow: 1px solid red;
 }
 
 .filters {
@@ -47,6 +55,8 @@
 .filters .input {
     width: 100%;
     margin-right: 16px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 15px;
 }
 
 .filters input.select {
