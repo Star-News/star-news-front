@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 300px;
     padding: 24px 0px;
-    background: black;
+    background: rgb(8, 8, 8);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -31,12 +31,12 @@
     border-radius: 15px;
     border: 1px solid rgb(41, 41, 41);
 }
-.search-bar input:hover {
-    border: 1px solid red;
+.search-bar input:focus-within {
+    border: 1px solid #F22222;
 }
 
 .search-bar button {
-    background: red;
+    background: #F22222;
     color: white;
     padding: 0px 16px;
     border-radius: 10px;
@@ -46,7 +46,7 @@
 }
 
 .button button {
-    box-shadow: 1px solid red;
+    box-shadow: 1px solid #F22222;
 }
 
 .filters {
@@ -67,6 +67,11 @@
     margin-right: 16px;
     font-family: "Montserrat", sans-serif;
     border-radius: 15px;
+    border: 1px solid #323232;
+}
+
+.filters .input:focus-within{
+    border: 1px solid #F22222;
 }
 
 .filters input.select {

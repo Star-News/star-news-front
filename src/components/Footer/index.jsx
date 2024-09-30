@@ -11,7 +11,7 @@ export default function Footer() {
                     <Logo />
                     <Categories orientation='columns' />
                     <NewsLetterForm />
-                    <p>&copy; 2024 StarNews. Todos os direitos reservados®</p>
+                    
                 </div>
             </div>
         </div>
