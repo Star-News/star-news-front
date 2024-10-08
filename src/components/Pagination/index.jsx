@@ -54,6 +54,7 @@ export default function Pagination({
   );
 }
 
+// ARRAY DE PAGINAÇÃO
 function paginationArray(current, highest, max) {
   const result = [1];
 

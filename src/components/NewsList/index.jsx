@@ -15,7 +15,7 @@ export default function NewsList({
     return (
         <div className='news-list' style={{ fontSize: `${fontSize}px` }}>
             <h2>Últimas Notícias - Por Relevância</h2>
-            {
+            { // desmembramento da API, separando ela em cada campo
                 articles.map(e => (
                     <div key={e.url} className='news-item'>
                         {/* Modificação do codigo, invés do botão ao clicar ler, só de apertar no texto ele já ler */}

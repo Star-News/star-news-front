@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { PatternFormat } from "react-number-format";
 import Select from 'react-select';
 
+// filtros
 const OPTIONS = [
     { value: 'DateDesc', label: 'Data Descendente' },
     { value: 'DateAsc', label: 'Data Ascendente' }

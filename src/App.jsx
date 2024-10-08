@@ -7,6 +7,7 @@ import NewsList from './components/NewsList'
 import Footer from './components/Footer'
 import { useParams, useSearchParams } from 'react-router-dom'
 
+//CONST USADA PARA EXECUTAR A FUNÇÃO DE PAGINAÇÃO NO CASO RESULTADOS POR PAGINA
 const RESULT_PER_PAGE = 10
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 
   const totalPages = Math.ceil(filteredArticles.length / RESULT_PER_PAGE)
 
+  // USE EFFECT PARA EXECUTAR A BUSCA POR DATA NA API
   useEffect(() => {
     setCurrentPage(0)
     const startDate = searchParams.get('startDate')

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './style.css'
 
+// const para separar as categorias da noticias, mudando sua rota
 const categories = [
     {
         name: 'Esportes',

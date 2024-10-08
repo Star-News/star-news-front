@@ -1,6 +1,7 @@
 import React from "react";
 import "../ProgressBar/style.css";
 
+// tela de carregamento
 const Loader = () => {
   return (
     <div className="loader">
