@@ -112,8 +112,8 @@ body {
   bottom: 20px;
   right: 20px;
   padding: 10px;
-  background: #aaaaaa;
-  color: rgb(0, 0, 0);
+  background: #007BFF;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -122,6 +122,6 @@ body {
 }
 
 #contrast-toggle:hover {
-  background-color: #dadada;
+  background-color: #4ea4ff;
 }
 

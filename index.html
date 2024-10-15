@@ -11,19 +11,30 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
   <title>Star News</title>
- 
+
 </head>
 
 <body>
   <div id="root"></div>
   <button id="contrast-toggle">Ativar Alto Contraste</button>
   <script type="module">
-    document.getElementById('contrast-toggle').addEventListener('click', function() {
+    document.getElementById('contrast-toggle').addEventListener('click', function () {
       document.body.classList.toggle('high-contrast');
       const isHighContrast = document.body.classList.contains('high-contrast');
       this.textContent = isHighContrast ? "Desativar Alto Contraste" : "Ativar Alto Contraste";
     });
   </script>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>

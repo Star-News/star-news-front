@@ -8,8 +8,8 @@ import Select from 'react-select';
 
 // filtros
 const OPTIONS = [
-    { value: 'DateDesc', label: 'Data Descendente' },
-    { value: 'DateAsc', label: 'Data Ascendente' }
+    { value: 'DateDesc', label: 'Mais Antigo' },
+    { value: 'DateAsc', label: 'Mais Recente' }
 ];
 
 const CATEGORY_OPTIONS = [
